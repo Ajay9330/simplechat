@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Include the external CSS file -->
+</head>
+
+<body>
+    <div id="container">
+        <div id="users">
+            <h2>Online Users</h2>
+            <ul id="user-list"></ul>
+        </div>
+        <div class="chatcont">
+            <h2>Chat Room</h2>
+
+
+            <div class="chat">
+                <div>
+                    <ul id="messages">
+                        <li>Welcome to chat App</li>
+                    </ul>
+             
+                </div>
+           
+            </div>
+            <form id="form" action="">
+                <input id="input" autocomplete="off" /><button id="send-button">Send</button>
+            </form>
+        </div>
+
+    </div>
+   
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        
+        var usersList = document.getElementById('user-list');
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+        var sendButton = document.getElementById('send-button'); // Add send button element
+
+        var username = prompt('Enter your username:');
+        if (username) {
+            socket.emit('join', username);
+            input.disabled = false; // Enable input field
+            sendButton.disabled = false; // Enable send button
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (input.value) {
+                    socket.emit('chat message', input.value);
+                    input.value = '';
+                }
+            });
+
+            socket.on('updateUsers', function (userList) {
+                usersList.innerHTML = userList.map(user => `<li>${user}</li>`).join('');
+            });
+
+            socket.on('notification', function (msg) {
+                var item = document.createElement('li');
+                item.textContent = msg;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+
+            socket.on('chat message', function (msgObj) {
+                var item = document.createElement('li');
+                if (msgObj.username === username) {
+                    item.className = 'outgoing'; // Add 'outgoing' class to outgoing messages
+                    item.textContent = `You: ${msgObj.message}`;
+                } else {
+                    item.className = 'incoming'; // Add 'incoming' class to incoming messages
+                    item.textContent = `${msgObj.username}: ${msgObj.message}`;
+                }
+                messages.appendChild(item);
+                messages.focus;
+                // window.scrollTo(0, document.body.scrollHeight);
+            });
+        }
+    </script>
+</body>
+
+</html>

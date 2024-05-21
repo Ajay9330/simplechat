@@ -1,0 +1,160 @@
+/* Put your CSS styles here */
+/* For example: */
+body {
+    margin: 0;
+    padding-bottom: 3rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f7f7f7;
+  }
+  #container{
+    display: flex;
+    max-height: 90vh;
+  }
+  #form {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.25rem;
+    /* position: fixed; */
+    /* bottom: 0;
+    left: 0;
+    right: 0; */
+    display: flex;
+    height: 3rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+  }
+  
+  #input {
+    border: none;
+    padding: 0 1rem;
+    flex-grow: 1;
+    border-radius: 2rem;
+    margin: 0.25rem;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+  }
+  
+  #input:focus {
+    outline: none;
+  }
+  
+  #form > button {
+    background: #333;
+    border: none;
+    padding: 0 1rem;
+    margin: 0.25rem;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  #users {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ccc;
+    width: 20%;
+    height: 100vh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+  }
+  
+  #users > li {
+    padding-left: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    color: #333;
+  }
+  
+  #messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /* margin-left: 21%; */
+    width: 100%;
+  }
+  
+  #messages > li {
+    display: block;
+    max-width: 80%;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ccc;
+    background-color: #f7f7f7;
+    color: #d90808;
+
+    margin:5px auto;
+    
+  }
+  
+  #messages >.incoming {
+
+    margin-left: 0%;
+    background-color: #79e746;
+    border-radius: 0 10px 10px 10px;
+    color: #000000;
+    
+  }
+  
+  #messages >.outgoing {
+    margin-right: 0%;
+    background-color: #0c90e8;
+    border-radius: 10px 0 10px 10px;
+    color: #eeeeee;
+
+  }
+  
+  .chatcont{
+    width: 90%;
+  }
+
+  .chat {
+    background-color: #ffffff;
+    padding: 2rem;
+    height: calc(100vh - 130px);
+    overflow-y: scroll;
+    flex-grow: 5;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .chat h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  #input {
+    border: none;
+    padding: 0.5rem;
+    flex-grow: 1;
+    border-radius: 2rem;
+    margin-right: 1rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #333;
+  }
+  
+  #input:focus {
+    outline: none;
+  }
+  
+  #form > button {
+    background: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  #send-button {
+    background-color: #333;
+  }
+  
+
+ 
